@@ -1,5 +1,7 @@
 package lesson2;
 
+import java.util.Arrays;
+
 public class Array {
     private int[] arr;
     private int size;
@@ -58,17 +60,40 @@ public class Array {
     }
 
     // homework
-//    public boolean delete(int index) {
-//
-//    }
-//
-//    public boolean deleteAll(int value) {
-//
-//    }
-//
-//    public boolean deleteAll() {
-//
-//    }
+    //сложность O(n)
+    public int delete(int index) {
+        int count = 0;
+        if (index < 0 || index >= size)
+            throw new ArrayIndexOutOfBoundsException("WTF!");
+
+        for(int i=index;i<=size-1;i++) {
+            arr[i]=arr[i+1];
+            count++;
+        }
+        size--;
+        System.out.println("delete iterations "+count);
+        return count;
+    }
+
+    //сложность O(n), т.к. внутренними циклами из-за их потенциальной немногочисленности можно пренебречь
+    public boolean deleteAll(int value) {
+        int count = 0;
+        for (int i=0; i<size; i++) {
+            count++;
+            if(arr[i]==value) {
+                count+=this.delete(i--);
+            }
+        }
+        System.out.println("deleteAll(value) iterations "+count);
+        return true;
+    }
+
+    //сложность O(n)
+    public boolean deleteAll() {
+        size=0;
+        arr = new int[size];
+        return true;
+    }
 
     public boolean isInArray(int value) {
         for (int i = 0; i < size; i++) {
@@ -107,41 +132,94 @@ public class Array {
         arr[b] = temp;
     }
 
-    public void sortBubble() {
+    public void sortBubble2() {
+        int count=0;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size - 1; j++) {
+                count++;
                 if (arr[j] > arr[j + 1])
                     swap(j, j + 1);
 
             }
         }
         isSorted = true;
+        System.out.println("sortBubble2 iterations "+count+" O(n^2 /2)");
     }
 
+    public void sortBubble() {
+        int count=0;
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size - 1; j++) {
+                count++;
+                if (arr[j] > arr[j + 1])
+                    swap(j, j + 1);
+
+            }
+        }
+        isSorted = true;
+        System.out.println("sortBubble iterations "+count+" O(n^2)");
+    }
+
+
     public void sortSelect() {
+        int count=0;
         int f;
         for (int i = 0; i < size; i++) {
             f = i;
             for (int j = i + 1; j < size; j++) {
+                count++;
                 if (arr[j] < arr[f])
                     f = j;
             }
             swap(i, f);
         }
         isSorted = true;
+        System.out.println("sortSelect iterations "+count+" O(n^2 /2)");
     }
 
     public void sortInsert() {
+        int count = 0;
         for (int i = 1; i < size; i++) {
             int temp = arr[i];
             int j = i;
             while (j > 0 && arr[j - 1] >= temp) {
+                count++;
                 arr[j] = arr[j - 1];
                 j--;
             }
             arr[j] = temp;
         }
         isSorted = true;
+        System.out.println("sortInsert iterations " + count + " O( n^2 /4)");
+    }
+
+
+    public void sortCounting() {
+        int count = 0;
+
+        int maxValue = 0;
+        for(int i=0;i<size;i++) {
+            count++;
+            if(maxValue<arr[i])
+                maxValue=arr[i];
+        }
+        int[] tmp = new int[maxValue+1];
+
+        for(int i=0; i<size; i++) {
+            count++;
+            tmp[ arr[i] ]++;
+        }
+
+        int index=0;
+        for(int i=0; i<tmp.length; i++) {
+            for(int j=0; j<tmp[i]; j++) {
+                count++;
+                arr[index++]=i;
+            }
+
+        }
+        //System.out.println(Arrays.toString(tmp));
+        System.out.println("sortInsert iterations " + count + " O(3n)");
     }
 
     @Override
