@@ -5,6 +5,8 @@ public class Main {
         ex1();
         System.out.println("------------------");
         ex2();
+        System.out.println("-------ex2Recurcive--------");
+        ex2Recurcive(0, 0,4,5,6,2,6,8,3,5,9);
         System.out.println("------------------");
         ex3();
         System.out.println("Правила подсчета: Считал циклы, на операции не смотрел)");
@@ -16,6 +18,8 @@ public class Main {
         System.out.println("в степень: " + pow(-5, 3));
         System.out.println("Сложность O(n)");
     }
+
+
     public static double pow (int a, int amount ) {
         double result = a;
 
@@ -46,6 +50,23 @@ public class Main {
         }
         System.out.println("min = "+ min);
         System.out.println("Сложность O(n)");
+    }
+
+    //
+    public static void ex2Recurcive(int pos, int min, int... arr) {
+        //зададим начальное значение
+        if(pos==0) min = arr[0];
+
+        if(min>arr[pos]) min = arr[pos];
+
+        if(++pos<arr.length) {
+            ex2Recurcive(pos, min, arr);
+            return;
+        }
+        else {
+            System.out.println("min = "+ min);
+            System.out.println("Сложность O(n)");
+        }
     }
 
     // среднее арифметическое
