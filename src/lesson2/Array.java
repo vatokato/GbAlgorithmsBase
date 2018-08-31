@@ -134,11 +134,11 @@ public class Array {
 
     public void sortBubble2() {
         int count=0;
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size - 1; j++) {
+        for (int i = size-1; i > 0; i--) {
+            for (int j = i; j > 0; j--) {
                 count++;
-                if (arr[j] > arr[j + 1])
-                    swap(j, j + 1);
+                if (arr[j] < arr[j - 1])
+                    swap(j, j - 1);
 
             }
         }
@@ -197,28 +197,33 @@ public class Array {
     public void sortCounting() {
         int count = 0;
 
-        int maxValue = 0;
+        int maxValue = arr[0];
+        int minValue = arr[0];
         for(int i=0;i<size;i++) {
             count++;
             if(maxValue<arr[i])
                 maxValue=arr[i];
+            if(minValue>arr[i])
+                minValue=arr[i];
         }
-        int[] tmp = new int[maxValue+1];
+
+        int[] tmp = new int[maxValue-minValue+1];
 
         for(int i=0; i<size; i++) {
             count++;
-            tmp[ arr[i] ]++;
+            tmp[ arr[i]-minValue ]++;
         }
 
         int index=0;
         for(int i=0; i<tmp.length; i++) {
             for(int j=0; j<tmp[i]; j++) {
                 count++;
-                arr[index++]=i;
+                arr[index++]=(i+minValue);
             }
 
         }
-        //System.out.println(Arrays.toString(tmp));
+
+        //System.out.println("tmp="+Arrays.toString(tmp));
         System.out.println("sortInsert iterations " + count + " O(3n)");
     }
 
