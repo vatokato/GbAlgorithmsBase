@@ -21,6 +21,10 @@ class StackSimple {
         return (top == -1);
     }
 
+    public int getSize() {
+        return maxSize;
+    }
+
     public String toString() {
         String result = "";
         for(int i=0; i<maxSize; i++) {
