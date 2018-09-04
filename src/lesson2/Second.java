@@ -118,7 +118,7 @@ public class Second {
 
         System.out.println(arr);
 
-        arr.sortBubble2();
+        arr.sortCounting();
         System.out.println(arr);
         System.out.println(arr.length());
 
