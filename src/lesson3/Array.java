@@ -1,4 +1,4 @@
-package jads.two.home;
+package lesson3;
 
 public class Array {
     private int arr[];

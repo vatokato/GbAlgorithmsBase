@@ -1,6 +1,4 @@
-package jads.three.online;
-
-import jads.two.home.Array;
+package lesson3;
 
 public class Stack {
     private Array stack;

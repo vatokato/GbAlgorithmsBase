@@ -1,4 +1,4 @@
-package jads.three.online;
+package lesson3;
 
 public class Third {
     public static void main(String[] args) {

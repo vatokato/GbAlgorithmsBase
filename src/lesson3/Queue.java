@@ -1,4 +1,5 @@
-package jads.three.online;
+package lesson3;
+
 
 public class Queue {
     private int size;

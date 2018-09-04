@@ -1,4 +1,5 @@
-package jads.two.home;
+package lesson3;
+
 
 public class Second {
     public static void main(String[] args) {
