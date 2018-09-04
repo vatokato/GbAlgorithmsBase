@@ -25,7 +25,7 @@ public class Stack {
         try {
             val = stack.get(head--);
         } catch (ArrayIndexOutOfBoundsException e) {
-            throw new RuntimeException("Stack is Empty");
+            throw new RuntimeException("StackSimple is Empty");
         }
         stack.remove();
         return val;
@@ -37,7 +37,7 @@ public class Stack {
         try {
             val = stack.get(head);
         } catch (ArrayIndexOutOfBoundsException e) {
-            throw new RuntimeException("Stack is Empty");
+            throw new RuntimeException("StackSimple is Empty");
         }
         return val;
     }
