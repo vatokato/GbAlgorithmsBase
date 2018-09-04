@@ -11,7 +11,7 @@ public class Homework {
         BufferedReader br = new BufferedReader(isr);
 
 
-// 1
+//        //1
 //        while (true) {
 //            System.out.print("Введите слово: ");
 //            input = br.readLine();
@@ -19,7 +19,7 @@ public class Homework {
 //            Bracket.check(input);
 //        }
 
-// 2
+//        //2
 //        while (true) {
 //            System.out.print("Введите слово: ");
 //            input = br.readLine();
@@ -27,15 +27,21 @@ public class Homework {
 //            ReverseReading.reading(input);
 //        }
 
-// дек еще делается
-        Deque d = new Deque(2);
-        d.insertRight(1);
-        d.insertRight(2);
-        d.insertRight(3);
-        d.insertRight(4);
-        d.insertRight(5);
-        d.removeLeft();
-        d.removeLeft();
-    }
+//        //3
+//        Deque d = new Deque(3);
+//        d.insertLeft(1);
+//        d.insertLeft(2);
+//        d.insertLeft(3);
+//        d.insertLeft(4);
 
+//      //4
+        PriorQueue p = new PriorQueue(5);
+        p.push(1);
+        p.push(2);
+        p.push(3);
+        p.push(6);
+        p.push(2);
+        p.push(7);
+
+    }
 }

@@ -40,6 +40,18 @@ public class Deque {
         System.out.println(peekLeft()+" "+Arrays.toString(queue)+" "+peekRight());
     }
 
+    public void insertLeft(int i) {
+        if (isFull()) {
+            riseArr();
+        }
+        if (head == 0)
+            head = size;
+        queue[--head] = i;
+        items++;
+        if(items==1) tail=head; // при первом добавлении инициализируется хвост
+        System.out.println(peekLeft()+" "+Arrays.toString(queue)+" "+peekRight());
+    }
+
     public int removeLeft() {
         if (isEmpty())
             throw new RuntimeException("Queue is empty");
@@ -51,12 +63,13 @@ public class Deque {
         return temp;
     }
 
+
     public int removeRight() {
         if (isEmpty())
             throw new RuntimeException("Queue is empty");
         queue[tail] = 0;
-        int temp = queue[head++];
-        head %= size;
+        int temp = queue[tail--];
+        if(tail==-1)  tail = size-1;
         items--;
         System.out.println(peekLeft()+" "+Arrays.toString(queue)+" "+peekRight());
         return temp;
@@ -79,11 +92,12 @@ public class Deque {
         if (tail >= head) {
             System.arraycopy(queue, 0, temp, 0, queue.length);
         } else {
-            System.arraycopy(queue, 0, temp, 0, tail + 1);
             System.arraycopy(queue, head,
-                    temp, size - (queue.length - head),
-                    queue.length - head - 1);
-            head = size - head - 1;
+                    temp, 0,
+                    queue.length - head);
+            System.arraycopy(queue, 0, temp, queue.length - head, head);
+            head = 0;
+            tail = queue.length-1;
         }
         queue = temp;
     }
