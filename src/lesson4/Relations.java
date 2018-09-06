@@ -1,9 +1,6 @@
 package lesson4;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Relations {
     public static void main(String[] args) {
@@ -15,6 +12,28 @@ public class Relations {
         System.out.println(rl.remove());
         System.out.println(rl);
         System.out.println(rl.contains(new Cat(2, "Murzik")));
+
+        DoubleLinkedList<Cat> dll = new DoubleLinkedList<>();
+        dll.insert(new Cat(1, "Bars"));
+        dll.insert(new Cat(1, "Murz"));
+        dll.insert(new Cat(1, "Kiss"));
+
+        System.out.println(dll);
+        System.out.println(dll.delete("Bars"));
+        System.out.println(dll);
+
+
+        LinkedList<Cat> ll = new LinkedList<>();
+        ll.add(new Cat(1, "Bars"));
+        ll.add(new Cat(1, "Murz"));
+        ll.add(new Cat(1, "Kiss"));
+        Iterator<Cat> iterat = ll.iterator();
+        System.out.println( "итератор" );
+        while(iterat.hasNext()) {
+            System.out.println(iterat.next().toString() );
+        }
+
+
 
         HashMap<String, String> map = new HashMap<>();
         Set<Map.Entry<String, String>> set = map.entrySet();
