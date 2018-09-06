@@ -101,4 +101,28 @@ public class DoubleLinkedList<T> {
         }
         return sb.toString();
     }
+
+    public MyIterator iterator() {
+        return new MyIterator(this);
+    }
+
+    class MyIterator {
+        private DoubleLinkedList<T> ddl;
+        private Node<T> current;
+
+        public MyIterator (DoubleLinkedList<T> list) {
+            this.ddl=list;
+            this.current=list.head;
+        }
+
+        public boolean hasNext() {
+            return this.current!=null;
+        }
+
+        public Node<T> next() {
+            Node<T> temp = this.current;
+            this.current = this.current.next;
+            return temp;
+        }
+    }
 }
