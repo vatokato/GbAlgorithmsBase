@@ -27,6 +27,8 @@ public class Relations {
         }
 
 
+//        System.out.println("first: "+it.first());
+//        System.out.println("last: "+it.last());
 
 
         LinkedList<Cat> ll = new LinkedList<>();
@@ -39,6 +41,7 @@ public class Relations {
         while(iterat.hasNext()) {
             System.out.println(iterat.next().toString() );
         }
+
 
         HashMap<String, String> map = new HashMap<>();
         Set<Map.Entry<String, String>> set = map.entrySet();

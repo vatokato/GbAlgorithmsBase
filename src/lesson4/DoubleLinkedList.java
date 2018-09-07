@@ -106,23 +106,35 @@ public class DoubleLinkedList<T> {
         return new MyIterator(this);
     }
 
+
     class MyIterator {
-        private DoubleLinkedList<T> ddl;
+        private DoubleLinkedList<T> dll;
         private Node<T> current;
+        private Node<T> first;
+        private Node<T> last;
 
         public MyIterator (DoubleLinkedList<T> list) {
-            this.ddl=list;
+            this.dll=list;
             this.current=list.head;
+            this.last=list.head;
         }
 
         public boolean hasNext() {
             return this.current!=null;
         }
 
+        //справа налево
         public Node<T> next() {
             Node<T> temp = this.current;
             this.current = this.current.next;
             return temp;
+        }
+        public Node<T> last() {
+            return this.last;
+        }
+
+        public Node<T> getCurrent() {
+            return current;
         }
     }
 }
