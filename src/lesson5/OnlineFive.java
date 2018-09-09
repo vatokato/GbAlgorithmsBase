@@ -17,20 +17,19 @@ public class OnlineFive {
         System.out.print(" i:" + i);
     }
 
-    static int count = 0;
-    private static int routes(int x, int y) {
-        count++;
-        if (x == 0 && y == 0) return 0;
-        if (x == 0 || y == 0) return 1;
-        return routes(x - 1, y) + routes(x, y - 1);
-    }
 
-    static int X = 8;
-    static int Y = 8;
-    static int QUEENS = 8;
-    static int board[][] = new int[Y][X];
 
-    static void init() {
+    static int X;
+    static int Y;
+    static int QUEENS;
+    static int board[][];
+
+    static void init(int size, int queens) {
+        X = size;
+        Y = size;
+        QUEENS = queens;
+        board = new int[Y][X];
+
         for (int i = 0; i < Y; i++) {
             for (int j = 0; j < X; j++) {
                 board[i][j] = 0;
@@ -89,6 +88,21 @@ public class OnlineFive {
         return false;
     }
 
+
+    // колво путей от 0,0 до точки
+    static int count = 0;
+    private static int routes(int x, int y) {
+        count++;
+        if (x == 0 && y == 0) return 0;
+        if (x == 0 || y == 0) return 1;
+        return routes(x - 1, y) + routes(x, y - 1);
+    }
+
+    private static int recCounter(int i) {
+        if(i==0) return 1;
+        return recCounter(i-1)+1;
+    }
+
     public static void main(String[] args) {
         /*
 1. Ханойская башня
@@ -96,9 +110,15 @@ public class OnlineFive {
     и не наступив ни на одну дважды
 3. ***Написать программу «Задача о рюкзаке» с помощью рекурсии.
         * */
-        init();
+        init(3,2);
         queens(1);
         printBoard();
+
+
+        for (int i = 0; i < 5; i++) {
+            System.out.printf("%6d",recCounter(i));
+        }
+        System.out.println();
 
 //        iterPrint(2);
 //        System.out.println();
