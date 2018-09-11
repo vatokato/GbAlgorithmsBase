@@ -21,16 +21,20 @@ public class Hanoi {
         poles[0].push(2);
         poles[0].push(1);
 
-        turn(from_pole, 2);
+        //Хотел решить стеками, но не получилось, подглядел решение :(
+        // и все равно не понимаю как рабоает.
+        turn(1, 2, 3,  6);
     }
 
-    public boolean turn(int from, int n) {
-        turn++;
-        if(poles[from].isEmpty()) return false;
-
-        turn(from,n-1);
-        print();
-        return false;
+    public void turn(int from, int temp, int to,   int n) {
+        if(n==1) {
+            System.out.println("disc 1 from "+from+" to "+ to);
+        }
+        else {
+            turn(from, to, temp, n-1);
+            System.out.println("disc "+n+" from "+from+" to "+ to);
+            turn(temp, from, to, n-1);
+        }
     }
 
     public void print() {
