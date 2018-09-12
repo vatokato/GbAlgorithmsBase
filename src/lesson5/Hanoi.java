@@ -28,10 +28,12 @@ public class Hanoi {
 
     public void turn(int from, int temp, int to,   int n) {
         if(n==1) {
+            System.out.println(++turn);
             System.out.println("disc 1 from "+from+" to "+ to);
         }
         else {
             turn(from, to, temp, n-1);
+            System.out.println(++turn);
             System.out.println("disc "+n+" from "+from+" to "+ to);
             turn(temp, from, to, n-1);
         }
