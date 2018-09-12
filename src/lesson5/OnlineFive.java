@@ -104,6 +104,9 @@ public class OnlineFive {
     }
 
     public static void main(String[] args) {
+        System.out.println( recCounter(3));
+
+
         /*
 1. Ханойская башня
 2. Обойти конём шахматную доску наступив на каждую клетку по одному разу
