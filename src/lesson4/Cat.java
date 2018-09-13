@@ -3,13 +3,16 @@ package lesson4;
 import java.util.Objects;
 
 public class Cat {
+    public static int id;
     private int age;
     private String name;
 
     public Cat(int age, String name) {
+        id++;
         this.age = age;
         this.name = name;
     }
+
 
     public int getAge() {
         return age;
