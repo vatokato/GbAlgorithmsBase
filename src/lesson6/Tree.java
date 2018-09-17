@@ -12,11 +12,13 @@ public class Tree {
         }
         @Override
         public String toString() {
-            return String.format("(I:%d, N:%s, A:%d)", c.id, c.getName(), c.getAge());
+            return String.format("(ID:%d, N:%s, A:%d (%d<-*->%d)", c.getId(), c.getName(), c.getAge(), this.left != null ? this.left.c.getId() : 0, this.right!=null?this.right.c.getId():0);
         }
     }
 
     TreeNode root;
+    int tmp_levels;
+    boolean is_balanced;
 
     public Cat find(int age) {
         TreeNode current = root;
@@ -59,15 +61,42 @@ public class Tree {
     }
 
     public void displayTree() {
-        inOrderTravers(root);
+        inOrderTravers(root, 0);
     }
 
-    private void inOrderTravers(TreeNode current) {
+    private void inOrderTravers(TreeNode current, int level) {
         if (current != null) {
-            inOrderTravers(current.left);
-            System.out.println(current);
-            inOrderTravers(current.right);
+            inOrderTravers(current.left, level+1);
+            System.out.println(level+" level: "+current);
+            inOrderTravers(current.right, level+1);
         }
+    }
+
+    public void isBalanced() {
+        if (root == null) return;
+        this.tmp_levels=0;
+        countOfLevels(root.left, 1);
+        int left_levels=this.tmp_levels ;
+        this.tmp_levels=0;
+        countOfLevels(root.right, 1);
+        int right_levels=this.tmp_levels ;
+        System.out.println("<-"+left_levels + "*"+ right_levels+"->");
+
+        if(Math.abs(left_levels-right_levels)>1) {
+            is_balanced = false;
+            System.out.println("Дерево не сбалансированно");
+        }
+        else {
+            is_balanced = true;
+            System.out.println("Дерево сбалансированно");
+        }
+    }
+
+    private void countOfLevels(TreeNode current, int level) {
+        if(current==null) return;
+        countOfLevels(current.left, level+1);
+        this.tmp_levels =  level > this.tmp_levels ? level : this.tmp_levels;
+        countOfLevels(current.right, level+1);
     }
 
     public boolean delete(int age) {
