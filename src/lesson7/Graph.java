@@ -26,6 +26,9 @@ public class Graph {
 
     public Graph(int size) {
         this.MAX_VERTICES = size;
+        this.vertices = new Vertex[MAX_VERTICES];
+        this.adjMatrix = new int[MAX_VERTICES][MAX_VERTICES];
+        this.size=0;
     }
 
     public void addVertex(char label) {
@@ -89,5 +92,17 @@ public class Graph {
             }
         }
         resetFlags();
+    }
+
+    public String printAdjMatrix() {
+        StringBuilder str = new StringBuilder();
+        for (int i = 0; i < adjMatrix.length; i++) {
+            str.append((i<10 ? " "+i : i) +": ");
+            for (int j = 0; j <  adjMatrix.length; j++) {
+                str.append(adjMatrix[i][j]+" ");
+            }
+            str.append("\n");
+        }
+        return str.toString();
     }
 }
