@@ -1,5 +1,7 @@
 package lesson7;
 
+import lesson3.Queue;
+
 import java.util.Arrays;
 
 public class Homework {
@@ -28,8 +30,11 @@ public class Homework {
         q.addEdge(6,9);
         q.addEdge(7,9);
 
-        q.widthTravers();
-        System.out.println(q.printAdjMatrix());
+        //q.addEdge(3,6);
+        //q.addEdge(4,8);
 
+        //System.out.println(q.printAdjMatrix());
+        System.out.println( q.widthFind('b', 'i') );
+        //OUT: [V:b, V:a, V:c, V:f, V:g, V:i]
     }
 }
